@@ -1,5 +1,7 @@
 package com.elconfidencial.bubbleshowcase
 
+import android.view.MotionEvent
+
 /**
  * Created by jcampos on 04/09/2018.
  *
@@ -25,4 +27,6 @@ interface BubbleShowCaseListener {
      * It is called when the user clicks on the bubble
      */
     fun onBubbleClick(bubbleShowCase: BubbleShowCase)
+
+    fun onTouch(bubbleShowCase: BubbleShowCase, event: MotionEvent) {}
 }

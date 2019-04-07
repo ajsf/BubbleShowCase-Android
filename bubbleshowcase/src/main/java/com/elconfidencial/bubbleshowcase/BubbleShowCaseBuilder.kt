@@ -25,6 +25,7 @@ class BubbleShowCaseBuilder{
     internal var mHighlightMode: BubbleShowCase.HighlightMode? = null
     internal var mDisableTargetClick: Boolean = false
     internal var mDisableCloseAction: Boolean = false
+    internal var mDismissOnTargetDown: Boolean = false
     internal var mShowOnce: String? = null
     internal var mIsFirstOfSequence: Boolean? = null
     internal var mIsLastOfSequence: Boolean? = null
@@ -72,7 +73,7 @@ class BubbleShowCaseBuilder{
      *  - If this param is not passed, the BubbleShowCase will not have main image
      */
     fun imageResourceId(resId: Int): BubbleShowCaseBuilder {
-        mImage = ContextCompat.getDrawable(mActivity!!.get(), resId)
+        mImage = ContextCompat.getDrawable(mActivity!!.get()!!.baseContext, resId)
         return this
     }
 
@@ -90,7 +91,7 @@ class BubbleShowCaseBuilder{
      *  - If this param is not defined, a default close icon is displayed
      */
     fun closeActionImageResourceId(resId: Int): BubbleShowCaseBuilder {
-        mCloseAction = ContextCompat.getDrawable(mActivity!!.get(), resId)
+        mCloseAction = ContextCompat.getDrawable(mActivity!!.get()!!.baseContext, resId)
         return this
     }
 
@@ -109,7 +110,7 @@ class BubbleShowCaseBuilder{
      *  - #3F51B5 color will be set if this param is not defined
      */
     fun backgroundColorResourceId(colorResId: Int): BubbleShowCaseBuilder {
-        mBackgroundColor = ContextCompat.getColor(mActivity!!.get(), colorResId)
+        mBackgroundColor = ContextCompat.getColor(mActivity!!.get()!!.baseContext, colorResId)
         return this
     }
 
@@ -127,7 +128,7 @@ class BubbleShowCaseBuilder{
      *  - White color will be set if this param is not defined
      */
     fun textColorResourceId(colorResId: Int): BubbleShowCaseBuilder {
-        mTextColor = ContextCompat.getColor(mActivity!!.get(), colorResId)
+        mTextColor = ContextCompat.getColor(mActivity!!.get()!!.baseContext, colorResId)
         return this
     }
 
@@ -182,6 +183,11 @@ class BubbleShowCaseBuilder{
      */
     fun disableCloseAction(isDisabled: Boolean): BubbleShowCaseBuilder{
         mDisableCloseAction = isDisabled
+        return this
+    }
+
+    fun dismissOnTargetDown(dismiss: Boolean): BubbleShowCaseBuilder {
+        mDismissOnTargetDown = dismiss
         return this
     }
 
